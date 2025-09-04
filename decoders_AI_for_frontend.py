@@ -69,7 +69,7 @@ def SHA1_encoder(data):
 # -------------------------------
 # Streamlit App
 # -------------------------------
-st.title("🛠 Free Decoders & Encoders in One")
+st.title("CipherVerse")
 
 menu = [
     "Base64",
@@ -138,5 +138,6 @@ elif choice == "All at once":
         st.write("**URL Decode:**", url_decoder(url_encoder(text)))
         st.write("**MD5:**", MD5_encoder(text))
         st.write("**SHA1:**", SHA1_encoder(text))
+
 
 
