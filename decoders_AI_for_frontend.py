@@ -2,7 +2,6 @@ import streamlit as st
 import base64
 import urllib.parse
 import hashlib
-from pycipher import Vigenere
 
 # -------------------------------
 # Encoder / Decoder Functions
@@ -139,4 +138,5 @@ elif choice == "All at once":
         st.write("**URL Decode:**", url_decoder(url_encoder(text)))
         st.write("**MD5:**", MD5_encoder(text))
         st.write("**SHA1:**", SHA1_encoder(text))
+
 
