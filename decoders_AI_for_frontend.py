@@ -36,10 +36,30 @@ def caesar_cipher(data, shift):
     return result
 
 def vigenere_encoder(keyword, data):
-    return Vigenere(keyword).encipher(data)
+    result = []
+    keyword = keyword.lower()
+    k_len = len(keyword)
+    for i, char in enumerate(data):
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            shift = ord(keyword[i % k_len]) - ord('a')
+            result.append(chr((ord(char) - base + shift) % 26 + base))
+        else:
+            result.append(char)
+    return ''.join(result)
 
 def vigenere_decoder(data, keyword):
-    return Vigenere(keyword).decipher(data)
+    result = []
+    keyword = keyword.lower()
+    k_len = len(keyword)
+    for i, char in enumerate(data):
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            shift = ord(keyword[i % k_len]) - ord('a')
+            result.append(chr((ord(char) - base - shift) % 26 + base))
+        else:
+            result.append(char)
+    return ''.join(result)
 
 def MD5_encoder(data):
     return hashlib.md5(data.encode()).hexdigest()
@@ -119,3 +139,4 @@ elif choice == "All at once":
         st.write("**URL Decode:**", url_decoder(url_encoder(text)))
         st.write("**MD5:**", MD5_encoder(text))
         st.write("**SHA1:**", SHA1_encoder(text))
+
