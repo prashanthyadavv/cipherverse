@@ -129,15 +129,20 @@ elif choice == "SHA1":
         st.code(SHA1_encoder(text))
 
 elif choice == "All at once":
-    if st.button("Run All"):
-        st.write("**Base64 Encode:**", base64_encoder(text))
-        st.write("**Base64 Decode:**", base64_decoder(base64_encoder(text)))
-        st.write("**Hex Encode:**", hex_encoder(text))
-        st.write("**Hex Decode:**", hex_decoder(hex_encoder(text)))
+    if st.button("Run Encoding"):
+        st.markdown("### Encoding Results")
+        st.write("**Base64 Encode:**", base64_encoder(text))   
+        st.write("**Hex Encode:**", hex_encoder(text))    
         st.write("**URL Encode:**", url_encoder(text))
-        st.write("**URL Decode:**", url_decoder(url_encoder(text)))
+        st.write("**ROT13:**", caesar_cipher(text, 13))
         st.write("**MD5:**", MD5_encoder(text))
         st.write("**SHA1:**", SHA1_encoder(text))
+    if st.button("Run Decoding"):
+        st.markdown("### Decoding Results")
+        st.write("**Base64 Decode:**", base64_decoder(base64_encoder(text)))
+        st.write("**Hex Decode:**", hex_decoder(hex_encoder(text)))
+        st.write("**URL Decode:**", url_decoder(url_encoder(text)))
+        st.write("**ROT13:**", caesar_cipher(text, 13))
 
 
 
