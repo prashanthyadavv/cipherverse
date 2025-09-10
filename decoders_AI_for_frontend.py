@@ -7,22 +7,40 @@ import hashlib
 # Encoder / Decoder Functions
 # -------------------------------
 def base64_encoder(data):
-    return base64.b64encode(data.encode("utf-8")).decode("utf-8")
+    try:
+        return base64.b64encode(data.encode("utf-8")).decode("utf-8")
+    except Exception as e:
+        return f" Error: {e}"
 
 def base64_decoder(data):
-    return base64.b64decode(data).decode("utf-8")
+    try:
+        return base64.b64decode(data).decode("utf-8")
+    except Exception as e:
+        return f" Error: {e}"
 
 def hex_encoder(data):
-    return data.encode().hex()
+    try:
+        return data.encode().hex()
+    except Exception as e:
+        return f" Error: {e}"
 
 def hex_decoder(data):
-    return bytes.fromhex(data).decode()
+    try:
+        return bytes.fromhex(data).decode()
+    except Exception as e:
+        return f" Error: {e}"
 
 def url_encoder(data):
-    return urllib.parse.quote(data)
+    try
+        return urllib.parse.quote(data)
+    except Exception as e:
+        return f" Error: {e}"
 
 def url_decoder(data):
-    return urllib.parse.unquote(data)
+    try:
+        return urllib.parse.unquote(data)
+    except Exception as e:
+        return f" Error: {e}"
 
 def caesar_cipher(data, shift):
     result = ""
@@ -143,6 +161,7 @@ elif choice == "All at once":
         st.write("**Hex Decode:**", hex_decoder(hex_encoder(text)))
         st.write("**URL Decode:**", url_decoder(url_encoder(text)))
         st.write("**ROT13:**", caesar_cipher(text, 13))
+
 
 
 
