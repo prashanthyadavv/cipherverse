@@ -31,7 +31,7 @@ def hex_decoder(data):
         return f" Error: {e}"
 
 def url_encoder(data):
-    try
+    try:
         return urllib.parse.quote(data)
     except Exception as e:
         return f" Error: {e}"
@@ -161,6 +161,7 @@ elif choice == "All at once":
         st.write("**Hex Decode:**", hex_decoder(hex_encoder(text)))
         st.write("**URL Decode:**", url_decoder(url_encoder(text)))
         st.write("**ROT13:**", caesar_cipher(text, 13))
+
 
 
 
