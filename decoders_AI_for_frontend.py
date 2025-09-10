@@ -98,7 +98,7 @@ menu = [
     "Vigenere Cipher",
     "MD5",
     "SHA1",
-    "All at once",
+    #"All at once",
 ]
 
 choice = st.sidebar.selectbox("Choose an option", menu)
@@ -162,6 +162,7 @@ elif choice == "SHA1":
 #        st.write("**Hex Decode:**", hex_decoder(hex_encoder(text)))
 #        st.write("**URL Decode:**", url_decoder(url_encoder(text)))
 #        st.write("**ROT13:**", caesar_cipher(text, 13))
+
 
 
 
