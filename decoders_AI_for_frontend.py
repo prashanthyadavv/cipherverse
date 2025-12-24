@@ -43,24 +43,26 @@ def url_decoder(data):
         return f" Error: {e}"
 
 def caesar_cipher(data, shift):
-    result = ""
+    result = []
     for char in data:
         if char.isalpha():
             base = ord("A") if char.isupper() else ord("a")
-            result += chr((ord(char) - base + shift) % 26 + base)
+            result.append(chr((ord(char) - base + shift) % 26 + base))
         else:
-            result += char
-    return result
+            result.append(char)
+    return ''.join(result)
 
 def vigenere_encoder(keyword, data):
     result = []
     keyword = keyword.lower()
     k_len = len(keyword)
-    for i, char in enumerate(data):
+    k_idx = 0
+    for char in data:
         if char.isalpha():
             base = ord('A') if char.isupper() else ord('a')
-            shift = ord(keyword[i % k_len]) - ord('a')
+            shift = ord(keyword[k_idx % k_len]) - ord('a')
             result.append(chr((ord(char) - base + shift) % 26 + base))
+            k_idx += 1
         else:
             result.append(char)
     return ''.join(result)
@@ -69,11 +71,13 @@ def vigenere_decoder(data, keyword):
     result = []
     keyword = keyword.lower()
     k_len = len(keyword)
-    for i, char in enumerate(data):
+    k_idx = 0
+    for char in data:
         if char.isalpha():
             base = ord('A') if char.isupper() else ord('a')
-            shift = ord(keyword[i % k_len]) - ord('a')
+            shift = ord(keyword[k_idx % k_len]) - ord('a')
             result.append(chr((ord(char) - base - shift) % 26 + base))
+            k_idx += 1
         else:
             result.append(char)
     return ''.join(result)
